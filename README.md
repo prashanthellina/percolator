@@ -24,7 +24,7 @@ US AND Thai
 
 Sample text (one title per line)
 
-``` bash
+```
 cat tests/text
 Blasts at market kill 118 in central Nigeria, official says
 McConnell wins primary in Kentucky, CNN projects he'll face Grimes
@@ -54,7 +54,7 @@ percolator queries text
 
 Output
 
-``` bash
+```
 Building the percolator ...
 
 Adding query "US" ...:  qid: 7516fd43adaa5e0b8a65a672c39845d2
