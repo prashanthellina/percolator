@@ -1,26 +1,3 @@
-'''
-TODO:
-* Make this file a script that accepts two files
-    1) queries files: 1 query per line (utf8)
-    2) data file: 1 text item per line (utf8)
-
-    * The output will be similar to data file except
-    that each line will be prefixed with line numbers
-    of the matching queries from queries file.
-
-* Document the methods of this file so someone can
-understand some of the more intricate parts of the code.
-
-* Write a README and provide sample queries and data files
-for testing. Also describe the limitations of the query. eg:
-no NOT. phrases cannot be longer than N words etc.
-
-* During installation, install a script called percolate
-that has the functionality of a script as mentioned above
-
-* Do performance testing
-'''
-
 import sys
 import hashlib
 import argparse
