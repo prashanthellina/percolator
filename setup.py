@@ -14,5 +14,9 @@ setup(
     ],
     package_dir={'percolator': 'percolator'},
     packages=find_packages('.'),
-    include_package_data=True
+    include_package_data=True,
+
+    entry_points = {
+        'console_scripts': ['percolator = percolator:percolator_command'],
+    },
 )
