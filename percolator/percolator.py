@@ -1,5 +1,4 @@
 '''
-
 TODO:
 * Make this file a script that accepts two files
     1) queries files: 1 query per line (utf8)
@@ -12,7 +11,6 @@ TODO:
 * Document the methods of this file so someone can
 understand some of the more intricate parts of the code.
 
-* Make this installable with pip (whoosh dependency)
 * Write a README and provide sample queries and data files
 for testing. Also describe the limitations of the query. eg:
 no NOT. phrases cannot be longer than N words etc.
@@ -245,7 +243,35 @@ class Percolator(object):
         return get_qfragments(query, max_fragments)
 
 def main():
-    pass
+    parser = argparse.ArgumentParser(description='Find queries that match '
+        'titles in input file')
+    parser.add_argument('queries_file', metavar='queries-file')
+    parser.add_argument('data_file', metavar='data-file')
+    args = parser.parse_args()
+
+    print 'Building the percolator ...'
+    print
+    p = Percolator()
+
+    for line in open(args.queries_file):
+        query = line.strip().decode('utf8', 'ignore')
+        print ('Adding query "%s" ...: ' % query),
+        qid = p.add_query(query)
+        print 'qid: %s' % qid
+
+    print
+    print 'Percolating ...'
+    print
+
+    for index, line in enumerate(open(args.data_file)):
+        line = line.strip()
+        print "%s: %s" % (index, line)
+
+        line = line.decode('utf8', 'ignore')
+        qids = p.get_matches(line)
+        for qid in qids:
+            print '\tmatched: %s: "%s"' % (qid, p.queries[qid].encode('utf8'))
+        print
 
 if __name__ == '__main__':
     main()

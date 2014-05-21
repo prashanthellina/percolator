@@ -1,1 +1,1 @@
-from percolator import Percolator, QFragment, percolator_command
+from percolator import Percolator, QFragment, main as percolator_command
